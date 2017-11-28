@@ -1,0 +1,25 @@
+{
+  "name": "@1backend/ng-client",
+  "version": "0.0.1",
+  "description": "Generic Angular client for all 1Backend services.",
+  "main": "./lib/index.js",
+  "typings": "./lib/index.d.ts",
+  "scripts": {
+    "prepare": "npm run build",
+    "build": "tsc"
+  },
+  "keywords": [
+    "typescript",
+    "node"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/1backend/ng-client.git"
+  },
+  "dependencies": {
+    "@angular/core": "5.0.0",
+    "@angular/common": "^5.0.0",
+    "rxjs": "^5.5.2",
+    "zone.js": "^0.8.14"
+  }
+}
