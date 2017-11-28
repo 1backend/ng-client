@@ -3,8 +3,10 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 
 @Injectable()
 export class NgClient {
+  // the token acquired from 1backend.com under your profile (eg. https://1backend.com/your-name)
   public token: string;
-  public address = 'https://1backend.com:9993';
+  // the path (eg. "/crufter/test-service/endpoint-path") will be appended to this
+  public address = 'https://1backend.com:9993/app';
   constructor(private http: HttpClient) {}
 
   // Call enables you to access any endpoint of any service on 1Backend

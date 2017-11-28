@@ -1,6 +1,6 @@
 {
   "name": "@1backend/ng-client",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Generic Angular client for all 1Backend services.",
   "main": "./lib/index.js",
   "typings": "./lib/index.d.ts",
