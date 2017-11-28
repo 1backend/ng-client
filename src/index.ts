@@ -13,13 +13,14 @@ export class NgClient {
     projectName: string,
     method: string,
     path: string,
-    input: Map<string, any>
+    input: any
   ): Promise<R> {
     return new Promise<R>((resolve, reject) => {
       let params = new HttpParams();
-      input.forEach((value, key) => {
+      for (let key in input) {
+        let value = input[key];
         params = params.set(key, value);
-      })
+      }
       if (method.toLowerCase() === 'get') {
         this.http.get<R>(this.address + path, {params: params}).subscribe((data: R) => {
           resolve(data);
