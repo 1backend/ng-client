@@ -1,12 +1,17 @@
 {
   "name": "@1backend/ng-client",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Generic Angular client for all 1Backend services.",
   "main": "./lib/index.js",
   "typings": "./lib/index.d.ts",
   "scripts": {
     "prepare": "npm run build",
     "build": "tsc"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "János Dobronszki",
+    "email": "dobronszki@gmail.com"
   },
   "keywords": [
     "typescript",
@@ -16,8 +21,11 @@
     "type": "git",
     "url": "https://github.com/1backend/ng-client.git"
   },
-  "dependencies": {
-    "@angular/core": "5.0.0",
+  "devDependencies": {
+    "@angular/cli": "^1.5.3",
+    "@angular/compiler-cli": "^5.0.0",
+    "typescript": "~2.4.2",
+    "@angular/core": "^5.0.0",
     "@angular/common": "^5.0.0",
     "rxjs": "^5.5.2",
     "zone.js": "^0.8.14"

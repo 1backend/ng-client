@@ -23,29 +23,30 @@ export class NgClient {
         let value = input[key];
         params = params.set(key, value);
       }
+      const fullPath = author + "/" + projectName + "/" + path;
       if (method.toLowerCase() === 'get') {
-        this.http.get<R>(this.address + path, {params: params}).subscribe((data: R) => {
+        this.http.get<R>(this.address + fullPath, {params: params}).subscribe((data: R) => {
           resolve(data);
         }, error => {
           reject(error);
         });
       }
       if (method.toLowerCase() === 'post') {
-        this.http.post<R>(this.address + path, input).subscribe((data: R) => {
+        this.http.post<R>(this.address + fullPath, input).subscribe((data: R) => {
           resolve(data);
         }, error => {
           reject(error);
         });
       }
       if (method.toLowerCase() === 'put') {
-        this.http.put<R>(this.address + path, input).subscribe((data: R) => {
+        this.http.put<R>(this.address + fullPath, input).subscribe((data: R) => {
           resolve(data);
         }, error => {
           reject(error);
         });
       }
       if (method.toLowerCase() === 'get') {
-        this.http.delete<R>(this.address + path, {params: params}).subscribe((data: R) => {
+        this.http.delete<R>(this.address + fullPath, {params: params}).subscribe((data: R) => {
           resolve(data);
         }, error => {
           reject(error);
