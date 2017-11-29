@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 
 @Injectable()
 export class NgClient {
@@ -23,30 +23,33 @@ export class NgClient {
         let value = input[key];
         params = params.set(key, value);
       }
-      const fullPath = author + "/" + projectName + "/" + path;
+      let headers = new HttpHeaders()
+      headers = headers.set("token", this.token);
+      let fullUrl = this.address + "/" + author + "/" + projectName + "/" + path;
+      fullUrl = fullUrl.replace(/\/{2,}/g, '\/');
       if (method.toLowerCase() === 'get') {
-        this.http.get<R>(this.address + fullPath, {params: params}).subscribe((data: R) => {
+        this.http.get<R>(fullUrl, {params: params, headers: headers}).subscribe((data: R) => {
           resolve(data);
         }, error => {
           reject(error);
         });
       }
       if (method.toLowerCase() === 'post') {
-        this.http.post<R>(this.address + fullPath, input).subscribe((data: R) => {
+        this.http.post<R>(fullUrl, input, {headers: headers}).subscribe((data: R) => {
           resolve(data);
         }, error => {
           reject(error);
         });
       }
       if (method.toLowerCase() === 'put') {
-        this.http.put<R>(this.address + fullPath, input).subscribe((data: R) => {
+        this.http.put<R>(fullUrl, input, {headers: headers}).subscribe((data: R) => {
           resolve(data);
         }, error => {
           reject(error);
         });
       }
       if (method.toLowerCase() === 'get') {
-        this.http.delete<R>(this.address + fullPath, {params: params}).subscribe((data: R) => {
+        this.http.delete<R>(fullUrl, {params: params, headers: headers}).subscribe((data: R) => {
           resolve(data);
         }, error => {
           reject(error);
