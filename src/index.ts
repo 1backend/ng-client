@@ -33,28 +33,26 @@ export class NgClient {
         }, error => {
           reject(error);
         });
-      }
-      if (method.toLowerCase() === 'post') {
+      } else if (method.toLowerCase() === 'post') {
         this.http.post<R>(fullUrl, input, {headers: headers}).subscribe((data: R) => {
           resolve(data);
         }, error => {
           reject(error);
         });
-      }
-      if (method.toLowerCase() === 'put') {
+      } else if (method.toLowerCase() === 'put') {
         this.http.put<R>(fullUrl, input, {headers: headers}).subscribe((data: R) => {
           resolve(data);
         }, error => {
           reject(error);
         });
-      }
-      if (method.toLowerCase() === 'get') {
+      } else if (method.toLowerCase() === 'delete') {
         this.http.delete<R>(fullUrl, {params: params, headers: headers}).subscribe((data: R) => {
           resolve(data);
         }, error => {
           reject(error);
         });
       }
+      reject("Unrecognised method: " + method);
     });
   }
 }
