@@ -51,8 +51,9 @@ export class NgClient {
         }, error => {
           reject(error);
         });
+      } else {
+        reject("Unrecognised method: " + method);
       }
-      reject("Unrecognised method: " + method);
     });
   }
 }
