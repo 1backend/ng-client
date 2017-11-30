@@ -23,10 +23,11 @@ export class NgClient {
         let value = input[key];
         params = params.set(key, value);
       }
+
       let headers = new HttpHeaders()
       headers = headers.set("token", this.token);
-      let fullUrl = this.address + "/" + author + "/" + projectName + "/" + path;
-      fullUrl = fullUrl.replace(/\/{2,}/g, '\/');
+      let fullUrl = this.address + "/" + (author + "/" + projectName + "/" + path).replace(/\/{2,}/g, '\/');
+
       if (method.toLowerCase() === 'get') {
         this.http.get<R>(fullUrl, {params: params, headers: headers}).subscribe((data: R) => {
           resolve(data);

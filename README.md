@@ -29,6 +29,7 @@ export class ExampleComponent implements OnInit {
   error: any;
 
   constructor(private ngClient: NgClient) {
+    this.ngClient.token = token;
     this.ngClient.call<string>('crufter', 'test', 'get', '/sql-example', {}).then(rsp => {
         this.response = rsp;
       })
